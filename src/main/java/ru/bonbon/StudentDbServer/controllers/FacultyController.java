@@ -20,7 +20,7 @@ public class FacultyController {
         return repository.getFaculty(id);
     }
 
-    @RequestMapping(value = "/getall", method = RequestMethod.GET)
+    @RequestMapping(value = "/get-all", method = RequestMethod.GET)
     public List<Faculty> getFaculties(){
         return repository.getFaculties();
     }
