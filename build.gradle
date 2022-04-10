@@ -29,6 +29,7 @@ dependencies {
 	implementation group: 'org.postgresql', name: 'postgresql', version: '42.3.3'
 	implementation group: 'org.json', name: 'json', version: '20220320'
 	implementation group: 'org.springframework.boot', name: 'spring-boot-gradle-plugin', version: '2.6.6'
+	implementation "org.gradle.api.plugins:gradle-heroku:0.9.6"
 
 }
 
