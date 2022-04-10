@@ -1,8 +1,8 @@
 package ru.bonbon.StudentDbServer.controllers;
 
+import org.json.JSONException;
+import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import ru.bonbon.StudentDbServer.entity.Faculty;
 import ru.bonbon.StudentDbServer.repository.FacultyRepository;
@@ -10,34 +10,52 @@ import ru.bonbon.StudentDbServer.repository.FacultyRepository;
 import java.util.List;
 
 @RestController
-@RequestMapping("/faculties")
+@RequestMapping("faculty")
 public class FacultyController {
-
-    private FacultyRepository repository;
-
     @Autowired
-    public FacultyController(FacultyRepository repository){
-        this.repository = repository;
+    FacultyRepository repository;
+
+    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    public Faculty getFaculty(@RequestParam("id") int id){
+        return repository.getFaculty(id);
     }
 
-    @RequestMapping(value = "/{id}", method = RequestMethod.GET)
-    public ResponseEntity<Faculty> get(@PathVariable("id") Long id){
-        Faculty faculty = repository.getById(id);
-        if (faculty == null) {
-            return new ResponseEntity<Faculty>(HttpStatus.NOT_FOUND);
+    @RequestMapping(value = "/getall", method = RequestMethod.GET)
+    public List<Faculty> getFaculties(){
+        return repository.getFaculties();
+    }
+
+    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    public int deleteFaculty(@RequestParam("id") int id){
+        return repository.deleteFaculty(id);
+    }
+
+    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "text/plain")
+    public int createFaculty(@RequestBody String param){
+        Faculty faculty = new Faculty();
+        try {
+            JSONObject jsObject = new JSONObject(param);
+            faculty.setName(jsObject.getString("name"));
+        }catch (JSONException e){
+            System.out.println("Не удалось распарсить json");
+            e.printStackTrace();
+            return 0;
         }
-        return new ResponseEntity<Faculty>(HttpStatus.OK);
+        return repository.createFaculty(faculty);
     }
 
-    @RequestMapping(value = "/new", method = RequestMethod.POST)
-    public ResponseEntity<Faculty> update(@RequestBody Faculty faculty) {
-        repository.save(faculty);
-        return get(faculty.getId());
+    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = "text/plain")
+    public int updateFaculty(@RequestBody String param){
+        Faculty faculty = new Faculty();
+        try {
+            JSONObject jsObject = new JSONObject(param);
+            faculty.setName(jsObject.getString("name"));
+            faculty.setId(jsObject.getInt("id"));
+        }catch (JSONException e){
+            System.out.println("Не удалось распарсить json");
+            e.printStackTrace();
+            return 0;
+        }
+        return repository.updateFaculty(faculty);
     }
-
-    @RequestMapping
-    public List<Faculty> getAll(){
-        return repository.findAll();
-    }
-
 }

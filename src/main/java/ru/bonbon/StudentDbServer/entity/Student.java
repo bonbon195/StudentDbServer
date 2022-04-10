@@ -1,34 +1,18 @@
 package ru.bonbon.StudentDbServer.entity;
 
-import javax.persistence.*;
-
-@Entity
 public class Student {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    @Column(name = "id", nullable = false)
-    private Long id;
-
-    @Column(name = "name", nullable = false)
+    private int id;
     private String name;
-
-    @Column(name = "surname", nullable = false)
     private String surname;
-
-    @Column(name = "patronymic")
     private String patronymic;
-
-    @Column(name = "birth_date", nullable = false)
     private String birthDate;
-
-    @Column(name = "id_group")
     private int idGroup;
 
-    public Long getId() {
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
