@@ -3,6 +3,7 @@ package ru.bonbon.StudentDbServer.controllers;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.bonbon.StudentDbServer.entity.Student;
 import ru.bonbon.StudentDbServer.repository.StudentRepository;
@@ -35,7 +36,7 @@ public class StudentController {
         return repository.deleteStudent(id);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "text/plain")
+    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int createStudent(@RequestBody String param){
         Student student = new Student();
         try {
@@ -53,7 +54,7 @@ public class StudentController {
         return repository.createStudent(student);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = "text/plain")
+    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int updateGroup(@RequestBody String param){
         Student student = new Student();
         try {
