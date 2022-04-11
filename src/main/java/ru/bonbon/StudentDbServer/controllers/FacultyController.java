@@ -3,6 +3,7 @@ package ru.bonbon.StudentDbServer.controllers;
 import org.json.JSONException;
 import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.bonbon.StudentDbServer.entity.Faculty;
 import ru.bonbon.StudentDbServer.repository.FacultyRepository;
@@ -30,7 +31,7 @@ public class FacultyController {
         return repository.deleteFaculty(id);
     }
 
-    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = "text/plain")
+    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int createFaculty(@RequestBody String param){
         Faculty faculty = new Faculty();
         try {
