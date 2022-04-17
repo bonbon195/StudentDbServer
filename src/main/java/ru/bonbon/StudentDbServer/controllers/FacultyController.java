@@ -45,7 +45,7 @@ public class FacultyController {
         return repository.createFaculty(faculty);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int updateFaculty(@RequestBody String param){
         Faculty faculty = new Faculty();
         try {

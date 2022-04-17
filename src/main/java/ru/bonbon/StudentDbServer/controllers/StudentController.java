@@ -54,7 +54,7 @@ public class StudentController {
         return repository.createStudent(student);
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
+    @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int updateGroup(@RequestBody String param){
         Student student = new Student();
         try {
