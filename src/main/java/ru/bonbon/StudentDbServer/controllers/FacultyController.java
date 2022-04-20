@@ -32,22 +32,10 @@ public class FacultyController {
     }
 
     @PostMapping("/create")
-    public int createFaculty(@RequestBody Faculty faculty){
-        return repository.createFaculty(faculty);
+    public Faculty createFaculty(@RequestBody Faculty faculty){
+        repository.createFaculty(faculty);
+        return faculty;
     }
-//    @RequestMapping(value = "/create", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE)
-//    public int createFaculty(@RequestBody String param){
-//        Faculty faculty = new Faculty();
-//        try {
-//            JSONObject jsObject = new JSONObject(param);
-//            faculty.setName(jsObject.getString("name"));
-//        }catch (JSONException e){
-//            System.out.println("Не удалось распарсить json");
-//            e.printStackTrace();
-//            return 0;
-//        }
-//        return repository.createFaculty(faculty);
-//    }
 
     @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
     public int updateFaculty(@RequestBody String param){
