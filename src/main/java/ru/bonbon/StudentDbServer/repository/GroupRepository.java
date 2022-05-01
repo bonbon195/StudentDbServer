@@ -10,11 +10,6 @@ import java.util.List;
 
 @Component
 public class GroupRepository {
-    private final String TABLE_GROUP= "\"Group\"";
-    private final String GROUP_ID = "\"id\"";
-    private final String GROUP_NAME = "\"name\"";
-    private final String ID_FACULTY = "\"id_faculty\"";
-
     @Autowired
     JdbcTemplate jdbcTemplate;
 

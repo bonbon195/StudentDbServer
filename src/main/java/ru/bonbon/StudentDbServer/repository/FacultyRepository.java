@@ -11,10 +11,6 @@ import java.util.List;
 
 @Component
 public class FacultyRepository {
-    private final String TABLE_FACULTY= "\"Faculty\"";
-    private final String FACULTY_ID = "\"id\"";
-    private final String FACULTY_NAME = "\"name\"";
-
     @Autowired
     JdbcTemplate jdbcTemplate;
 

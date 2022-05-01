@@ -1,9 +1,6 @@
 package ru.bonbon.StudentDbServer.controllers;
 
-import org.json.JSONException;
-import org.json.JSONObject;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.MediaType;
 import org.springframework.web.bind.annotation.*;
 import ru.bonbon.StudentDbServer.entity.Faculty;
 import ru.bonbon.StudentDbServer.repository.FacultyRepository;
@@ -16,17 +13,17 @@ public class FacultyController {
     @Autowired
     FacultyRepository repository;
 
-    @RequestMapping(value = "/get", method = RequestMethod.GET)
+    @GetMapping("/get")
     public Faculty getFaculty(@RequestParam("id") int id){
         return repository.getFaculty(id);
     }
 
-    @RequestMapping(value = "/get-all", method = RequestMethod.GET)
+    @GetMapping("/get-all")
     public List<Faculty> getFaculties(){
         return repository.getFaculties();
     }
 
-    @RequestMapping(value = "/delete", method = RequestMethod.DELETE)
+    @DeleteMapping("/delete")
     public int deleteFaculty(@RequestParam("id") int id){
         return repository.deleteFaculty(id);
     }
@@ -37,18 +34,8 @@ public class FacultyController {
         return faculty;
     }
 
-    @RequestMapping(value = "/update", method = RequestMethod.PUT, consumes = MediaType.APPLICATION_JSON_VALUE)
-    public int updateFaculty(@RequestBody String param){
-        Faculty faculty = new Faculty();
-        try {
-            JSONObject jsObject = new JSONObject(param);
-            faculty.setName(jsObject.getString("name"));
-            faculty.setId(jsObject.getInt("id"));
-        }catch (JSONException e){
-            System.out.println("Не удалось распарсить json");
-            e.printStackTrace();
-            return 0;
-        }
+    @PutMapping("/update")
+    public int updateFaculty(@RequestBody Faculty faculty){
         return repository.updateFaculty(faculty);
     }
 }

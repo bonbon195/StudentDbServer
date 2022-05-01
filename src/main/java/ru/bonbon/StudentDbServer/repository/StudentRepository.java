@@ -10,14 +10,6 @@ import java.util.List;
 
 @Component
 public class StudentRepository {
-    private final String TABLE_STUDENT= "\"Student\"";
-    private final String STUDENT_ID = "\"id\"";
-    private final String STUDENT_NAME = "\"name\"";
-    private final String STUDENT_SURNAME = "\"surname\"";
-    private final String STUDENT_PATRONYMIC = "\"patronymic\"";
-    private final String STUDENT_BIRTH_DATE = "\"birth_date\"";
-    private final String ID_GROUP = "\"id_group\"";
-
     @Autowired
     JdbcTemplate jdbcTemplate;
 

@@ -1,7 +1,11 @@
 package ru.bonbon.StudentDbServer.entity;
 
+import javax.persistence.Column;
+
 public class Faculty {
+    @Column(name = "id", nullable = false)
     private int id;
+    @Column(name = "name", nullable = false)
     private String name;
 
     public int getId() {
