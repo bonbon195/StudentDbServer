@@ -12,7 +12,7 @@ public class GroupMapper implements RowMapper<Group> {
         Group group = new Group();
         group.setId(rs.getInt("id"));
         group.setName(rs.getString("name"));
-        group.setIdFaculty(rs.getInt("id_faculty"));
+        group.setIdFaculty(rs.getInt("idFaculty"));
         return group;
     }
 }

@@ -2,9 +2,8 @@ package ru.bonbon.StudentDbServer.entity;
 
 public class Group {
     private int id;
-
     private String name;
-    private int id_faculty;
+    private int idFaculty;
 
     public int getId() {
         return id;
@@ -23,10 +22,10 @@ public class Group {
     }
 
     public int getIdFaculty() {
-        return id_faculty;
+        return idFaculty;
     }
 
     public void setIdFaculty(int idFaculty) {
-        this.id_faculty = idFaculty;
+        this.idFaculty = idFaculty;
     }
 }

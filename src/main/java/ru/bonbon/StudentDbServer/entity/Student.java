@@ -1,19 +1,16 @@
 package ru.bonbon.StudentDbServer.entity;
 
-import javax.persistence.Column;
-
 public class Student {
-    @Column(name = "id", nullable = false)
     private int id;
-    @Column(name = "name", nullable = false)
+
     private String name;
-    @Column(name = "surname", nullable = false)
+
     private String surname;
-    @Column(name = "patronymic", nullable = true)
+
     private String patronymic;
-    @Column(name = "birth_name", nullable = false)
+
     private String birthDate;
-    @Column(name = "id_group", nullable = false)
+
     private int idGroup;
 
     public int getId() {

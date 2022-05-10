@@ -14,8 +14,9 @@ public class GroupRepository {
     JdbcTemplate jdbcTemplate;
 
     public int createGroup(Group group){
-        return jdbcTemplate.update("insert into \"Group\" (\"id\", \"name\") values (?, ?)", group.getIdFaculty(),
-                group.getName());
+        return jdbcTemplate.update("insert into \"Group\" (\"name\", \"idFaculty\") values (?, ?)",
+                group.getName(),
+                group.getIdFaculty());
     }
 
     public int deleteGroup(int id){
@@ -27,7 +28,7 @@ public class GroupRepository {
     }
 
     public List<Group> getGroupsByFaculty(int idFaculty){
-        return jdbcTemplate.query("select * from \"Group\" where \"id_faculty\"=?", new GroupMapper(), idFaculty);
+        return jdbcTemplate.query("select * from \"Group\" where \"idFaculty\"=?", new GroupMapper(), idFaculty);
     }
 
     public List<Group> getGroups(){
@@ -35,7 +36,7 @@ public class GroupRepository {
     }
 
     public int updateGroup(Group group){
-        return jdbcTemplate.update("update \"Group\" set \"name\"=?, \"id_faculty\"=? where \"id\"=?",
+        return jdbcTemplate.update("update \"Group\" set \"name\"=?, \"idFaculty\"=? where \"id\"=?",
                 group.getName(), group.getIdFaculty(), group.getId());
     }
 }

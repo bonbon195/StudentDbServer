@@ -15,7 +15,7 @@ public class StudentRepository {
 
     public int createStudent(Student student){
         return jdbcTemplate.update("insert into \"Student\" (\"name\", \"surname\", \"patronymic\", " +
-                        "\"birth_date\", \"id_group\") values (?, ?, ?, ?, ?)",
+                        "\"birthDate\", \"idGroup\") values (?, ?, ?, ?, ?)",
                 student.getName(), student.getSurname(), student.getPatronymic(), student.getBirthDate(),
                 student.getIdGroup());
     }
@@ -29,7 +29,7 @@ public class StudentRepository {
     }
 
     public List<Student> getStudentsByGroup(int groupId){
-        return jdbcTemplate.query("select * from \"Student\" where \"id\"=?", new StudentMapper(), groupId);
+        return jdbcTemplate.query("select * from \"Student\" where \"idGroup\"=?", new StudentMapper(), groupId);
     }
 
     public List<Student> getStudents(){
@@ -38,7 +38,7 @@ public class StudentRepository {
 
     public int updateStudent(Student student){
         return jdbcTemplate.update("update \"Student\" set \"name\"=?, \"surname\"=?, \"patronymic\"=?, " +
-                        "\"birth_date\"=?, \"id_group\"=? where \"id\"=?",
+                        "\"birthDate\"=?, \"idGroup\"=? where \"id\"=?",
                 student.getName(), student.getSurname(), student.getPatronymic(), student.getBirthDate(),
                 student.getIdGroup(), student.getId());
     }

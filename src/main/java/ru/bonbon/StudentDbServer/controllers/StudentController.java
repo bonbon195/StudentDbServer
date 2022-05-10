@@ -19,7 +19,7 @@ public class StudentController {
     }
 
     @GetMapping("/get-by")
-    public List<Student> getStudents(@RequestParam("id_group") int idGroup){
+    public List<Student> getBy(@RequestParam("id_group") int idGroup){
         return repository.getStudentsByGroup(idGroup);
     }
 
@@ -34,8 +34,9 @@ public class StudentController {
     }
 
     @PostMapping("/create")
-    public int createStudent(@RequestBody Student student){
-        return repository.createStudent(student);
+    public Student createStudent(@RequestBody Student student){
+        repository.createStudent(student);
+        return student;
     }
 
     @PutMapping("/update")
